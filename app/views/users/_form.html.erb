@@ -1,0 +1,48 @@
+<%= form_for(@user, :html => { :multipart => true }) do |f| %>
+  <%= f.error_messages %><center>
+    <table id="standard_table">
+      <tr><td><center>
+          <%= f.label :name %></td><td>
+          <center> <%= f.text_field :name %>
+        </td></tr>
+      <tr><td><center>
+          <%= f.label :date %></td><td>
+          <center> <%= f.datetime_select :date %>
+        </td></tr>
+      <tr><td><center>
+          <%= f.label :city %></td><td>
+          <center> <%= f.text_field :city %>
+        </td></tr>
+      <h4>New Files</h4>
+      <% i=1 %>
+      <% f.fields_for :assets do |asset_fields| %>
+        <% if asset_fields.object.new_record? %>
+          <tr><td><center>File <%= i %></td><td><center><%= asset_fields.file_field :asset %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+
+
+    <table id="standard_table">
+      <tr><th align="center" colspan="5">Old Files</th></tr><% i=1 %>
+      <% f.fields_for :assets do |asset_fields| %>
+        <% unless asset_fields.object.new_record? %>
+          <div class="thumb">
+            <td>
+              <% if (i==5) %>
+                <% for user in @users %>
+                  <% for asset in user.assets %>
+                    <%= link_to image_tag(asset_fields.asset.url(:thumb)), asset_fields.object.asset.url(:original),:class =>("top_up") unless asset.asset.nil? %>
+                    <%= asset_fields.check_box :_destroy %><% i = i+1 %>
+                  <%end%>
+                <%end%>
+
+              <% end %>
+            </td>
+          </div>
+        <% end %>
+      <% end %>
+    </table>
+    <%= f.submit %>
+  <% end %>

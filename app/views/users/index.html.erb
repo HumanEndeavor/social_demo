@@ -1,0 +1,29 @@
+<br></br><br></br><br></br>
+<center>
+<table id ="standard_table">
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>City</th>
+    <th>Photos</th>
+  </tr>
+  <% for user in @users %>
+    <tr>
+      <td>
+        <%= link_to("#{user.name}",user) %>
+        <%= link_to(image_tag('Edit.png',:width =>30,:height =>30), edit_user_path(user)) %>
+        <%= link_to(image_tag('Delete.png',:width =>30,:height =>30), user, :confirm => 'Are you sure?', :method => :delete) %>
+      </td>
+      <td><%= user.date.strftime("%d/%m/%Y") %></td>
+      <td><%= user.city %></td>
+      <td>
+        <div class="thumb">
+          <% for asset in user.assets %>
+            <%= link_to image_tag(asset.asset.url(:thumb)), asset.asset.url(:original),:class =>("top_up") unless asset.asset.nil? %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+<p><%= link_to "New User", new_user_path %></p>

@@ -1,0 +1,45 @@
+<% title "User" %>
+<center>
+<table style="color:yellow; border:1px solid red;rules:box;">
+  <tr>
+    <th>Name:</th>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <th>Date:</th>
+    <td><%= @user.date %></td>
+  </tr>
+  <tr>
+    <th>City:</th>
+    <td><%= @user.city %></td>
+  </tr>
+  <tr>
+</table>
+
+<table id="standard_table">
+  <tr><td align="center" colspan="3">MY DAILY Photos</td></tr>
+  <tr>
+    <th align="center" colspan="3"></th>
+  </tr><% i=1 %>
+  <div class="thumb"><tr>
+    <% for asset in @user.assets %>
+    <td>
+          <% if(i%3==0) %>
+            <%= link_to image_tag(asset.asset.url(:medium)), asset.asset.url(:original),:class =>("top_up") unless asset.asset.nil? %><%= i %></tr><tr>
+    
+    <% i = i+1 %>
+    
+      <% else %>
+        <%= link_to image_tag(asset.asset.url(:medium)), asset.asset.url(:original),:class =>("top_up") unless asset.asset.nil? %>
+     <%= i %>
+    <% i = i+1 %>
+    
+      <% end %>
+      </td>
+    <% end %>
+  </div>
+  <%= link_to "Edit", edit_user_path(@user) %> |
+  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", users_path %>
+</center>
+</table>
