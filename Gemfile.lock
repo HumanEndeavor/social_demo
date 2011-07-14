@@ -43,7 +43,7 @@ GEM
     mocha (0.9.12)
     mysql (2.8.1-x86-mingw32)
     nifty-generators (0.4.6)
-    paperclip (2.3.14)
+    paperclip (2.3.15)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)

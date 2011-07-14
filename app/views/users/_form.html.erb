@@ -30,15 +30,16 @@
         <% unless asset_fields.object.new_record? %>
           <div class="thumb">
             <td>
-              <% if (i==5) %>
-                <% for user in @users %>
-                  <% for asset in user.assets %>
-                    <%= link_to image_tag(asset_fields.asset.url(:thumb)), asset_fields.object.asset.url(:original),:class =>("top_up") unless asset.asset.nil? %>
-                    <%= asset_fields.check_box :_destroy %><% i = i+1 %>
-                  <%end%>
-                <%end%>
+             
 
-              <% end %>
+   <p>
+
+     <%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original) %>
+
+   <%= asset_fields.check_box :_destroy %>
+   </p>
+
+  
             </td>
           </div>
         <% end %>
