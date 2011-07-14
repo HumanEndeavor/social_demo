@@ -1,4 +1,4 @@
-<% title "User" %>
+
 <center>
 <table style="color:yellow; border:1px solid red;rules:box;">
   <tr>
@@ -25,21 +25,21 @@
     <% for asset in @user.assets %>
     <td>
           <% if(i%3==0) %>
-            <%= link_to image_tag(asset.asset.url(:medium)), asset.asset.url(:original),:class =>("top_up") unless asset.asset.nil? %><%= i %></tr><tr>
+            <%= link_to image_tag(asset.asset.url(:medium)), asset.asset.url(:original),:class =>("top_up") unless asset.asset.nil? %></tr><tr>
     
     <% i = i+1 %>
     
       <% else %>
         <%= link_to image_tag(asset.asset.url(:medium)), asset.asset.url(:original),:class =>("top_up") unless asset.asset.nil? %>
-     <%= i %>
+ 
     <% i = i+1 %>
     
       <% end %>
       </td>
     <% end %>
   </div>
-  <%= link_to "Edit", edit_user_path(@user) %> |
-  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", users_path %>
+  <%= link_to(image_tag('Edit.png',:width =>30,:height =>30), edit_user_path((@user))) %>|
+  <%=  link_to image_tag('Delete.png', :alt => "Delete", :title => "DELETE",:remote=>true,:width =>30,:height =>30), @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to image_tag('all.png',:width =>30,:height =>30),  users_path %>
 </center>
 </table>

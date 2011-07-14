@@ -4,7 +4,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag :defaults %>
-    <%= javascript_include_tag "rails" %>
+    <%= javascript_include_tag "rails","jquery_ujs" %>
     <%= csrf_meta_tag %>
     <%= javascript_include_tag "http://gettopup.com/releases/latest/top_up-min.js" %>
     <%= yield(:head) %>

@@ -9,7 +9,7 @@ gem 'mysql'
 gem 'nifty-generators'
 gem 'paperclip'
 gem 'mocha'
-
+gem "jquery-rails"
 # Use unicorn as the web server
 # gem 'unicorn'
 

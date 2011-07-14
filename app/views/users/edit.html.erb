@@ -1,8 +1,9 @@
-<% title "Edit User" %>
 
-<%= render 'form' %>
+
+
 
 <p>
-  <%= link_to "Show", @user %> |
-  <%= link_to "View All", users_path %>
+  <%= link_to image_tag('show.png',:width =>30,:height =>30,:alt => "Show Details"), @user %> |
+   <%= link_to image_tag('all.png',:width =>30,:height =>30,:alt => "View All"),  users_path %>
 </p>
+<%= render 'form' %>

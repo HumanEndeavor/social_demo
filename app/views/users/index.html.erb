@@ -1,4 +1,5 @@
 <br></br><br></br><br></br>
+<%= javascript_include_tag "jquery.min","jquery_ujs" %>
 <center>
 <table id ="standard_table">
   <tr>
@@ -20,11 +21,11 @@
       <td>
         <div class="thumb">
           <% for asset in user.assets %>
-            <%= link_to image_tag(asset.asset.url(:thumb)), asset.asset.url(:original),:class =>("top_up") unless asset.asset.nil? %>
+            <%= link_to image_tag(asset.asset.url(:thumb),:class =>("hello")), asset.asset.url(:original) %>
           <% end %>
         </div>
       </td>
     </tr>
     <% end %>
   </table>
-<p><%= link_to "New User", new_user_path %></p>
+<p><%= link_to image_tag('new_user.png',:width =>30,:height =>30), new_user_path %></p>

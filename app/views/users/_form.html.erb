@@ -3,15 +3,15 @@
     <table id="standard_table">
       <tr><td><center>
           <%= f.label :name %></td><td>
-          <center> <%= f.text_field :name %>
+          <center> <%= f.text_field :name,:class=>'user' %>
         </td></tr>
       <tr><td><center>
           <%= f.label :date %></td><td>
-          <center> <%= f.datetime_select :date %>
+          <center> <%= f.datetime_select :date,:class=>'user' %>
         </td></tr>
       <tr><td><center>
           <%= f.label :city %></td><td>
-          <center> <%= f.text_field :city %>
+          <center> <%= f.text_field :city,:class=>'user' %>
         </td></tr>
       <h4>New Files</h4>
       <% i=1 %>
@@ -23,27 +23,29 @@
       <% end %>
     </table>
 
-
+<%= f.submit %>
     <table id="standard_table">
       <tr><th align="center" colspan="5">Old Files</th></tr><% i=1 %>
       <% f.fields_for :assets do |asset_fields| %>
         <% unless asset_fields.object.new_record? %>
           <div class="thumb">
-            <td>
-             
-
-   <p>
-
-     <%= link_to image_tag(asset_fields.object.asset.url(:thumb)), asset_fields.object.asset.url(:original) %>
-
-   <%= asset_fields.check_box :_destroy %>
-   </p>
-
-  
-            </td>
-          </div>
+             <td>
+          <% if(i%3==0) %>
+           <%= link_to image_tag(asset_fields.object.asset.url(:medium)), asset_fields.object.asset.url(:original) ,:class =>("top_up")  %>
+     <%= asset_fields.check_box :_destroy %></tr><tr>
+    <% i = i+1 %>
+    
+      <% else %>
+        <%= link_to image_tag(asset_fields.object.asset.url(:medium)), asset_fields.object.asset.url(:original) ,:class =>("top_up")  %>
+  <%= asset_fields.check_box :_destroy %>
+    <% i = i+1 %>
+    
+      <% end %>
+                
+      </td>
+             </div>
         <% end %>
       <% end %>
     </table>
-    <%= f.submit %>
+    
   <% end %>
